@@ -1,0 +1,182 @@
+[
+  {
+      "recipe_id": "71299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Chocolate Cake",
+      "recipe_slug":"chocolate-cake",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "do first step", "step_number": 1},
+          {"instruction": "do something 2", "step_number": 2}
+      ],
+      "recipe_user_id": "266d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "USA",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
+      "recipe_ingredients": [
+          {"name": "Flour", "unit": "g", "weight": 1, "quantity": 500},
+          {"name": "Sugar", "unit": "g", "weight": 1, "quantity": 1500},
+          {"name": "Pepino", "unit": "pz", "weight": 1, "quantity": 3}
+      ]
+  },
+  {
+      "recipe_id": "a7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Vanilla Ice Cream",
+      "recipe_slug":"vanilla-ice-cream",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Mix ingredients", "step_number": 1},
+          {"instruction": "Freeze for 4 hours", "step_number": 2}
+      ],
+      "recipe_user_id": "156d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "Canada",
+      "recipe_image": "https://media.istockphoto.com/id/1369489882/es/foto/variedad-de-alimentos-veganos-de-prote%C3%ADnas-a-base-de-plantas.jpg?s=1024x1024&w=is&k=20&c=ZZ0V_-hNEwKC2kn1EXW3kwUNPE3TrMk8NhG8WEtVOnc=",
+      "recipe_ingredients": [
+          {"name": "Milk", "unit": "ml", "weight": 1, "quantity": 500},
+          {"name": "Sugar", "unit": "g", "weight": 1, "quantity": 200},
+          {"name": "Vanilla Extract", "unit": "ml", "weight": 1, "quantity": 5}
+      ]
+  },
+  {
+      "recipe_id": "b7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Spaghetti Bolognese",
+      "recipe_slug":"spaghetti-bolognese",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Boil pasta", "step_number": 1},
+          {"instruction": "Cook meat sauce", "step_number": 2}
+      ],
+      "recipe_user_id": "196d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "Italy",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/10/bowl-of-ice-cream-with-chocolate.jpg",
+      "recipe_ingredients": [
+          {"name": "Spaghetti", "unit": "g", "weight": 1, "quantity": 200},
+          {"name": "Ground Beef", "unit": "g", "weight": 1, "quantity": 300},
+          {"name": "Tomato Sauce", "unit": "ml", "weight": 1, "quantity": 200}
+      ]
+  },
+  {
+      "recipe_id": "c7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Caesar Salad",
+      "recipe_slug": "caesar-salad",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Prepare dressing", "step_number": 1},
+          {"instruction": "Mix salad", "step_number": 2}
+      ],
+      "recipe_user_id": "136d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "USA",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/09/peaches.jpg",
+      "recipe_ingredients": [
+          {"name": "Lettuce", "unit": "g", "weight": 1, "quantity": 100},
+          {"name": "Croutons", "unit": "g", "weight": 1, "quantity": 50},
+          {"name": "Caesar Dressing", "unit": "ml", "weight": 1, "quantity": 30}
+      ]
+  },
+  {
+      "recipe_id": "d7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Grilled Chicken",
+      "recipe_slug": "grilled-chicken",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Marinate chicken", "step_number": 1},
+          {"instruction": "Grill until cooked", "step_number": 2}
+      ],
+      "recipe_user_id": "286d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "USA",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/08/crispy-spicy-chicken-wings.jpg",
+      "recipe_ingredients": [
+          {"name": "Chicken Breast", "unit": "g", "weight": 1, "quantity": 200},
+          {"name": "Olive Oil", "unit": "ml", "weight": 1, "quantity": 20},
+          {"name": "Lemon Juice", "unit": "ml", "weight": 1, "quantity": 10}
+      ]
+  },
+  {
+      "recipe_id": "e7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Margarita Pizza",
+      "recipe_slug":"margarita-pizza",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Prepare dough", "step_number": 1},
+          {"instruction": "Bake with toppings", "step_number": 2}
+      ],
+      "recipe_user_id": "376d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "Italy",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/06/ice-cream-cone-splash.jpg",
+      "recipe_ingredients": [
+          {"name": "Pizza Dough", "unit": "g", "weight": 1, "quantity": 300},
+          {"name": "Tomato Sauce", "unit": "ml", "weight": 1, "quantity": 100},
+          {"name": "Mozzarella", "unit": "g", "weight": 1, "quantity": 150}
+      ]
+  },
+  {
+      "recipe_id": "f7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Apple Pie",
+      "recipe_slug": "apple-pie",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Prepare crust", "step_number": 1},
+          {"instruction": "Fill with apples", "step_number": 2}
+      ],
+      "recipe_user_id": "166d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "USA",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2024/01/best-burger-in-town.jpg",
+      "recipe_ingredients": [
+          {"name": "Apples", "unit": "g", "weight": 1, "quantity": 500},
+          {"name": "Flour", "unit": "g", "weight": 1, "quantity": 200},
+          {"name": "Sugar", "unit": "g", "weight": 1, "quantity": 100}
+      ]
+  },
+  {
+      "recipe_id": "g7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Beef Stew",
+      "recipe_slug":"beef-stew",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Brown the beef", "step_number": 1},
+          {"instruction": "Simmer with vegetables", "step_number": 2}
+      ],
+      "recipe_user_id": "176d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "UK",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/09/beef-cut-close-up.jpg",
+      "recipe_ingredients": [
+          {"name": "Beef", "unit": "g", "weight": 1, "quantity": 400},
+          {"name": "Potatoes", "unit": "g", "weight": 1, "quantity": 300},
+          {"name": "Carrots", "unit": "g", "weight": 1, "quantity": 200}
+      ]
+  },
+  {
+      "recipe_id": "h7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Pancakes",
+      "recipe_slug":"pancakes",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Mix ingredients", "step_number": 1},
+          {"instruction": "Cook on a griddle", "step_number": 2}
+      ],
+      "recipe_user_id": "126d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "Canada",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/05/freshly-prepared-beef-steak-with-vegetables.jpg",
+      "recipe_ingredients": [
+          {"name": "Flour", "unit": "g", "weight": 1, "quantity": 200},
+          {"name": "Milk", "unit": "ml", "weight": 1, "quantity": 300},
+          {"name": "Eggs", "unit": "pcs", "weight": 1, "quantity": 2}
+      ]
+  },
+  {
+      "recipe_id": "i7299b68-5946-4641-889f-ac5bb9740309",
+      "recipe_name": "Chicken Curry",
+      "recipe_slug": "chicken-curry",
+      "creator_name": "joe doe",
+      "recipe_instructions": [
+          {"instruction": "Cook chicken", "step_number": 1},
+          {"instruction": "Add curry sauce", "step_number": 2}
+      ],
+      "recipe_user_id": "256d43c8-f731-4493-bc37-04becea22dbd",
+      "recipe_country": "India",
+      "recipe_image": "https://www.foodiesfeed.com/wp-content/uploads/2023/12/pink-macarons.jpg",
+      "recipe_ingredients": [
+          {"name": "Chicken", "unit": "g", "weight": 1, "quantity": 400},
+          {"name": "Curry Paste", "unit": "g", "weight": 1, "quantity": 100},
+          {"name": "Coconut Milk", "unit": "ml", "weight": 1, "quantity": 200}
+      ]
+  }
+]
