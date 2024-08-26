@@ -1,9 +1,14 @@
+import { RecipesGrid } from "@/components/recipes/recipes-grid";
 import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-8xl">El inicio del fin</h1>
+    <main className="">
+      <section className="px-0 md:px-5">
+        <h2 className="py-5 text-center text-3xl font-semibold md:text-left">
+          Some of our recipes
+        </h2>
+      </section>
+      <RecipesGrid></RecipesGrid>
     </main>
   );
 }
