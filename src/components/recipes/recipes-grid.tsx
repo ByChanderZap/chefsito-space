@@ -1,8 +1,5 @@
 import { RecipePreview } from "@/types/recipes";
-import {
-  fetchAllRecipesPreview,
-  getRecipesPreview,
-} from "@/lib/data/fetch-recipes";
+import { getRecipesPreview } from "@/lib/data/fetch-recipes";
 import { RecipeItem } from "./recipe-item";
 
 export async function RecipesGrid({
@@ -12,10 +9,7 @@ export async function RecipesGrid({
   query?: string;
   currentPage?: number;
 }) {
-  let recipes: RecipePreview[];
-  query
-    ? (recipes = await getRecipesPreview(query))
-    : (recipes = await fetchAllRecipesPreview());
+  const recipes: RecipePreview[] = await getRecipesPreview(query);
 
   return (
     <div className="px-2 md:px-0">
