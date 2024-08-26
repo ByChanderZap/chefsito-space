@@ -1,14 +1,13 @@
-import { RecipesGrid } from "@/components/recipes/recipes-grid";
-import Image from "next/image";
+import { GridDisplay } from "@/components/recipes/grid-display";
+import { Search } from "@/components/search";
+
 export default function Home() {
   return (
     <main className="">
-      <section className="px-0 md:px-5">
-        <h2 className="py-5 text-center text-3xl font-semibold md:text-left">
-          Some of our recipes
-        </h2>
-      </section>
-      <RecipesGrid></RecipesGrid>
+      <div className="max-w-xl pt-24 pb-24 mx-auto">
+        <Search placeholder="Try to find something delicious to cook"></Search>
+      </div>
+      <GridDisplay />
     </main>
   );
 }
