@@ -1,6 +1,6 @@
 'use server'
 
-import { getUserByUsernameOrEmail } from "@/lib/store/user.queries";
+import { createUser, getUserByUsernameOrEmail } from "@/lib/store/user.queries";
 import { hashPassword } from "@/lib/utils/password-utils";
 import { FormState } from "@/types/auth/signin-formstate";
 import { SignInFormSchema } from '@/validations/auth.schema'
@@ -25,14 +25,13 @@ export async function signUp(prevState: FormState, formData: FormData) {
 
  
   const { name, username, password, email, confirmPassword } = validatedFields.data
-  console.log({
-    name,
-    username,
-    email,
-    password,
-    confirmPassword
-  })
-  console.log()
+  // console.log({
+  //   name,
+  //   username,
+  //   email,
+  //   password,
+  //   confirmPassword
+  // })
 
   try {
     const user = await getUserByUsernameOrEmail({ username, email })
@@ -44,6 +43,14 @@ export async function signUp(prevState: FormState, formData: FormData) {
 
     const hashedPassword = await hashPassword(password, 10)
     
+    const userCreated = await createUser({
+      name,
+      username,
+      email,
+      password: hashedPassword
+    })
+
+    console.log(userCreated)
     await new Promise((resolve) => setTimeout(resolve, 1000))
   } catch (error) {
     console.error(error)

@@ -1,5 +1,5 @@
 export interface FormState {
-  message?: string | null
+  message?: string
   errors?: {
     name?: string[];
     username?: string[];
