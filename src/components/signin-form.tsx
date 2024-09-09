@@ -8,26 +8,21 @@ import Divider from "./form-components/divider";
 import FormSubmitButton from "./btns/form-submit-auth";
 import CheckboxInput from "./form-components/checkbox-input";
 import FormHeader from "./form-components/header";
+import { authenticate } from "@/actions/auth";
+import ErrorMessage from "./form-components/error-message";
 
 export default function SignInForm() {
-  const [formState, formAction] = useFormState(() => {}, {});
+  const [errorMessage, formAction] = useFormState(authenticate, undefined);
 
   return (
-    <form>
+    <form action={formAction}>
       <FormHeader
         cta="Register here"
         text="Don't have an account"
         title="Sign in"
       />
       {/* Email */}
-      <TextInput
-        id="email"
-        type="email"
-        name="email"
-        label="Email"
-        // errors={formState.errors?.email || []}
-        errors={[]}
-      />
+      <TextInput id="email" type="email" name="email" label="Email" />
       <PasswordInput
         id="password"
         name="password"
@@ -54,6 +49,13 @@ export default function SignInForm() {
 
       <div className="mt-12">
         <FormSubmitButton text="Sign In" loadingText="Signing In" />
+        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {errorMessage && <ErrorMessage message={errorMessage} />}
+        </div>
       </div>
 
       <Divider />

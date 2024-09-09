@@ -1,14 +1,17 @@
 'use server'
 
+import { signIn } from "@/auth";
 import { createUser, getUserByUsernameOrEmail } from "@/lib/store/user.queries";
 import { hashPassword } from "@/lib/utils/password-utils";
-import { FormState } from "@/types/auth/signin-formstate";
-import { SignInFormSchema } from '@/validations/auth.schema'
+import { SignUpFormState } from "@/types/auth/signin-formstate";
+import { SignUpFormSchema, SignInFormSchema } from '@/validations/auth.schema'
+import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 
 
 
-export async function signUp(prevState: FormState, formData: FormData) {
-  const validatedFields = SignInFormSchema.safeParse({
+export async function signUpAction(prevState: SignUpFormState, formData: FormData) {
+  const validatedFields = SignUpFormSchema.safeParse({
     name: formData.get('name'),
     username: formData.get('username'),
     email: formData.get('email'),
@@ -19,19 +22,11 @@ export async function signUp(prevState: FormState, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Create Invoice.',
+      message: 'Missing Fields. Failed to create user.',
     };
   }
-
  
-  const { name, username, password, email, confirmPassword } = validatedFields.data
-  // console.log({
-  //   name,
-  //   username,
-  //   email,
-  //   password,
-  //   confirmPassword
-  // })
+  const { name, username, password, email } = validatedFields.data
 
   try {
     const user = await getUserByUsernameOrEmail({ username, email })
@@ -56,7 +51,24 @@ export async function signUp(prevState: FormState, formData: FormData) {
     console.error(error)
   }
 
-  return {
-    
+  redirect('/auth/signin')
+}
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
   }
 }

@@ -3,7 +3,7 @@ interface TextInputProps {
   name: string;
   label: string;
   type: string;
-  errors: string[];
+  errors?: string[];
 }
 
 const TextInput: React.FC<TextInputProps> = ({

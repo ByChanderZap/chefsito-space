@@ -1,17 +1,17 @@
 "use client";
 
-import { FormState } from "@/types/auth/signin-formstate";
-import { signUp } from "@/actions/auth";
+import { SignUpFormState } from "@/types/auth/signin-formstate";
+import { signUpAction } from "@/actions/auth";
 import { useFormState } from "react-dom";
 import FormSubmitButton from "./btns/form-submit-auth";
 import TextInput from "./form-components/text-input";
 import PasswordInput from "./form-components/password-input";
 import ErrorMessage from "./form-components/error-message";
 
-const initialState: FormState = {};
+const initialState: SignUpFormState = { message: null, errors: {} };
 
 export default function SignUpForm() {
-  const [formState, formAction] = useFormState(signUp, initialState);
+  const [formState, formAction] = useFormState(signUpAction, initialState);
 
   return (
     <form action={formAction} className="w-3/4 mx-auto md:w-2/5">

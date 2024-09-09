@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 
-export const SignInFormSchema = z
+export const SignUpFormSchema = z
   .object({
     name: z
       .string({
@@ -39,3 +39,16 @@ export const SignInFormSchema = z
     message: 'Passwords do not match. Please try again.',
     path: ['confirmPassword'],
   });
+
+export const SignInFormSchema = z
+  .object({
+    email: z
+      .string()
+      .email('Not a valid Email.')
+      .min(1, { message: 'Email is required.' })
+      .max(300, { message: 'Email is too long.' }),
+    password: z
+      .string()
+      .min(8, { message: 'Password must be at least 8 characters long.' })
+      .max(100, { message: 'Password maximum length is 100 characters.' }),
+  })

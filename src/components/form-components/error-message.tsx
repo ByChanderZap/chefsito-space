@@ -1,5 +1,5 @@
 interface ErrorMessagesProps {
-  message?: string;
+  message?: string | null;
 }
 
 const ErrorMessage: React.FC<ErrorMessagesProps> = ({ message }) => (
