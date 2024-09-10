@@ -1,12 +1,15 @@
 'use server'
 
 import { signIn } from "@/auth";
-import { createUser, getUserByUsernameOrEmail } from "@/lib/store/user.queries";
+import { createUser, getUserByEmail } from "@/lib/data/user.queries";
 import { hashPassword } from "@/lib/utils/password-utils";
-import { SignUpFormState } from "@/types/auth/signin-formstate";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { SignInFormState, SignUpFormState } from "@/types/auth/signin-formstate";
 import { SignUpFormSchema, SignInFormSchema } from '@/validations/auth.schema'
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
+import { generateVerificationToken } from "@/lib/tokens";
+import { sendVerificationEmail } from "@/lib/mail";
 
 
 
@@ -29,10 +32,11 @@ export async function signUpAction(prevState: SignUpFormState, formData: FormDat
   const { name, username, password, email } = validatedFields.data
 
   try {
-    const user = await getUserByUsernameOrEmail({ username, email })
+    const user = await getUserByEmail({ email })
+
     if (user) {
       return {
-        message: 'Credentials already in use.'
+        message: 'Email already in use.'
       }
     }
 
@@ -45,8 +49,13 @@ export async function signUpAction(prevState: SignUpFormState, formData: FormDat
       password: hashedPassword
     })
 
-    console.log(userCreated)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    // By now this just works in DEV
+    const verificationToken = await generateVerificationToken(email)
+    await sendVerificationEmail(verificationToken.email, verificationToken.token)
+
+    return {
+      success: "Confirmation Email Sent!"
+    }
   } catch (error) {
     console.error(error)
   }
@@ -55,20 +64,68 @@ export async function signUpAction(prevState: SignUpFormState, formData: FormDat
 }
 
 export async function authenticate(
-  prevState: string | undefined,
+  prevState: SignInFormState,
   formData: FormData,
 ) {
+  const parsedCredentials = SignInFormSchema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password'),
+  })
+
+  if (!parsedCredentials.success) {
+    return {
+      error: 'Please check your credentials'
+    } as SignInFormState
+  }
+
+  const { email, password } = parsedCredentials.data
+
+  const existingUser = await getUserByEmail({ email })
+  if (!existingUser || !existingUser.email || !existingUser.password) {
+    return {
+      error: "Email does not exists"
+    } as SignInFormState
+  }
+
+  // By now this just works in DEV
+  if (!existingUser.emailVerified) {
+    const verificationToken = await generateVerificationToken(existingUser.email)
+    await sendVerificationEmail(verificationToken.email, verificationToken.token)
+    return {
+      message: "Confirmation Email Sent."
+    } as SignInFormState
+  }
+
   try {
-    await signIn('credentials', formData);
+    await signIn('credentials', {
+      email,
+      password,
+      redirectTo: DEFAULT_LOGIN_REDIRECT
+    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.';
+          return {
+            error: 'Invalid credentials.'
+          } as SignInFormState;
+          /**
+           * This "CallbackRouteError" happens when returning null on signIn function
+           * This should not be happening, it is probably a next-auth v5 error.
+           */
+        case 'CallbackRouteError':
+          return {
+            error: 'Invalid Credentials'
+          } as SignInFormState
         default:
-          return 'Something went wrong.';
+          return {
+            error:'Something went wrong.'
+          } as SignInFormState;
       }
     }
     throw error;
   }
+  return {}
 }
+
+

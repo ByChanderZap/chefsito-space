@@ -6,11 +6,11 @@ import TwitterIcon from "./icons/twitter";
 export default function OauthButtons() {
   return (
     <div className="mt-6 flex justify-center space-x-6">
-      <SocialButton icon={<GoogleIcon />} />
+      <SocialButton providerName="google" icon={<GoogleIcon />} />
 
-      <SocialButton icon={<TwitterIcon />} />
+      <SocialButton providerName="github" icon={<TwitterIcon />} />
 
-      <SocialButton icon={<DiscordIcon />} />
+      {/* <SocialButton icon={<DiscordIcon />} /> */}
     </div>
   );
 }

@@ -7,8 +7,13 @@ import FormSubmitButton from "./btns/form-submit-auth";
 import TextInput from "./form-components/text-input";
 import PasswordInput from "./form-components/password-input";
 import ErrorMessage from "./form-components/error-message";
+import SuccessMessage from "./form-components/success-message";
 
-const initialState: SignUpFormState = { message: null, errors: {} };
+const initialState: SignUpFormState = {
+  message: null,
+  errors: {},
+  success: null,
+};
 
 export default function SignUpForm() {
   const [formState, formAction] = useFormState(signUpAction, initialState);
@@ -57,6 +62,7 @@ export default function SignUpForm() {
       </div>
 
       <ErrorMessage message={formState.message} />
+      <SuccessMessage message={formState.success} />
       <FormSubmitButton
         text="Register"
         loadingText="Creating user..."

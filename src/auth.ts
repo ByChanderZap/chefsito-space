@@ -1,33 +1,68 @@
-import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
-import Credentials from 'next-auth/providers/credentials';
-import { SignInFormSchema } from './validations/auth.schema';
-import { getUserByUsernameOrEmail } from './lib/store/user.queries';
-import { passwordMatch } from './lib/utils/password-utils';
-import Discord from 'next-auth/providers/discord';
+import NextAuth from "next-auth"
+import authConfig from "@/auth.config"
 
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import { prisma } from '@/lib/prisma'
+import { getUserById } from "./lib/data/user.queries"
  
-export const { auth, signIn, signOut } = NextAuth({
-  ...authConfig,
-  providers: [
-    Credentials({
-      name:'credentials',
-      async authorize(credentials) {
-        const parsedCredentials = SignInFormSchema.safeParse(credentials) 
-        
-        if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUserByUsernameOrEmail({email});
+export const { 
+  handlers, 
+  signIn, 
+  signOut, 
+  auth 
+} = NextAuth({
+  pages: {
+    signIn: "/auth/signin",
+    error: "/auth/error"
+  },
+  events: {
+    async linkAccount({ user }) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() }
+      })
+    }
+  },
+  callbacks: {
+    async signIn({ user, account }) {
+      // Allow oauth without email verification
+      if (account?.provider !== 'credentials') return true
 
-          if (!user) return null;
+      const existingUser = await getUserById(user.id as string)
+      
+      //Prevent sign in without email verification
+      if (!existingUser?.emailVerified) return false
 
-          const match = await passwordMatch(password, user.password as string)
+      // TODO: add 2fa check
 
-          if(match) return user
-        }
-        console.log('Invalid credentials')
-        return null;
-      },
-    }),
-  ],
-});
+      return true
+    },
+
+    async session({ user, token, session }) {
+
+      if (token.sub && session.user) {
+        session.user.id = token.sub
+      }
+
+      if (token.role && session.user) {
+        session.user.role = token.role
+      }
+
+      return session
+    },
+    async jwt({ token }) {
+      if(!token.sub) return token
+
+      const existingUser = await getUserById(token.sub)
+
+      if(!existingUser) return token
+
+      token.role = existingUser.role
+
+      return token
+    }
+  },
+  adapter: PrismaAdapter(prisma),
+  session: { strategy: "jwt" },
+  ...authConfig
+})

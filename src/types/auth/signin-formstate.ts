@@ -1,5 +1,6 @@
 export interface SignUpFormState {
   message?: string | null;
+  success?: string | null;
   errors?: {
     name?: string[];
     username?: string[];
@@ -10,9 +11,6 @@ export interface SignUpFormState {
 }
 
 export interface SignInFormState {
-  message?: string
-  errors?: {
-    email?: string[];
-    password?: string[]
-  }
+  error?: string | null
+  message?: string | null
 }

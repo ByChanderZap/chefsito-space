@@ -10,9 +10,22 @@ import CheckboxInput from "./form-components/checkbox-input";
 import FormHeader from "./form-components/header";
 import { authenticate } from "@/actions/auth";
 import ErrorMessage from "./form-components/error-message";
+import { useSearchParams } from "next/navigation";
+import { SignInFormState } from "@/types/auth/signin-formstate";
+import SuccessMessage from "./form-components/success-message";
+
+const initialState: SignInFormState = {
+  message: null,
+  error: null,
+};
 
 export default function SignInForm() {
-  const [errorMessage, formAction] = useFormState(authenticate, undefined);
+  const searchParams = useSearchParams();
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "Email already in use with different provider"
+      : "";
+  const [state, formAction] = useFormState(authenticate, initialState);
 
   return (
     <form action={formAction}>
@@ -47,15 +60,13 @@ export default function SignInForm() {
         </div>
       </div>
 
-      <div className="mt-12">
+      <div>
+        <ErrorMessage message={state.error || urlError} />
+        <SuccessMessage message={state.message} />
         <FormSubmitButton text="Sign In" loadingText="Signing In" />
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {errorMessage && <ErrorMessage message={errorMessage} />}
-        </div>
+
+        {/* {state.error ||
+            (urlError && <ErrorMessage message={state.error || urlError} />)} */}
       </div>
 
       <Divider />
