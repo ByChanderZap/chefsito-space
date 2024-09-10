@@ -34,3 +34,13 @@ export async function createUser(data: Prisma.UserCreateInput) {
   });
   return user;
 }
+
+export const verifyEmail = async (id: string, email: string) => {
+  await prisma.user.update({
+    where: { id },
+    data: {
+      emailVerified: new Date(),
+      email
+    }
+  })
+}

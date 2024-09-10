@@ -31,6 +31,7 @@ export const {
       const existingUser = await getUserById(user.id as string)
       
       //Prevent sign in without email verification
+      // This will only work / be uncomented on DEV until we got a domain :(
       if (!existingUser?.emailVerified) return false
 
       // TODO: add 2fa check

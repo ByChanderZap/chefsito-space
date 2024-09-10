@@ -1,4 +1,3 @@
-import { FormSubmitButton } from "@/components/btns/form-submit-auth";
 import SignUpForm from "@/components/register-form";
 
 export default function SignUpPage() {
