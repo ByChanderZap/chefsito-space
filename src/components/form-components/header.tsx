@@ -1,7 +1,7 @@
 interface FormHeaderProps {
-  title: string;
-  text: string;
-  cta: string;
+  title?: string;
+  text?: string;
+  cta?: string;
 }
 
 const FormHeader: React.FC<FormHeaderProps> = ({ title, text, cta }) => (

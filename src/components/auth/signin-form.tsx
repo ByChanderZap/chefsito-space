@@ -1,18 +1,19 @@
 "use client";
 import { useFormState } from "react-dom";
 
-import TextInput from "./form-components/text-input";
-import OauthButtons from "./oauth-btns";
-import PasswordInput from "./form-components/password-input";
-import Divider from "./form-components/divider";
-import FormSubmitButton from "./btns/form-submit-auth";
-import CheckboxInput from "./form-components/checkbox-input";
-import FormHeader from "./form-components/header";
+import TextInput from "../form-components/text-input";
+import OauthButtons from "../oauth-btns";
+import PasswordInput from "../form-components/password-input";
+import Divider from "../form-components/divider";
+import FormSubmitButton from "../btns/form-submit-auth";
+import CheckboxInput from "../form-components/checkbox-input";
+import FormHeader from "../form-components/header";
 import { authenticate } from "@/actions/auth";
-import ErrorMessage from "./form-components/error-message";
+import ErrorMessage from "../form-components/error-message";
 import { useSearchParams } from "next/navigation";
-import { SignInFormState } from "@/types/auth/signin-formstate";
-import SuccessMessage from "./form-components/success-message";
+import { SignInFormState } from "@/types/auth/formStates";
+import SuccessMessage from "../form-components/success-message";
+import Link from "next/link";
 
 const initialState: SignInFormState = {
   message: null,
@@ -40,7 +41,6 @@ export default function SignInForm() {
         id="password"
         name="password"
         label="Password"
-        // errors={formState.errors?.password || []}
         errors={[]}
       />
 
@@ -51,12 +51,12 @@ export default function SignInForm() {
           label="Remember me"
         />
         <div>
-          <a
-            href="#"
+          <Link
+            href="/auth/reset"
             className="text-sm font-semibold text-trinidad-500 hover:underline"
           >
             Forgot Password?
-          </a>
+          </Link>
         </div>
       </div>
 

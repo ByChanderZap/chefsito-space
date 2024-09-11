@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { createUser, getUserByEmail } from "@/lib/data/user.queries";
 import { hashPassword } from "@/lib/utils/password-utils";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
-import { SignInFormState, SignUpFormState } from "@/types/auth/signin-formstate";
+import { SignInFormState, SignUpFormState } from "@/types/auth/formStates";
 import { SignUpFormSchema, SignInFormSchema } from '@/validations/auth.schema'
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";

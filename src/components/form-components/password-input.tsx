@@ -2,7 +2,7 @@ interface PasswordInputProps {
   id: string;
   name: string;
   label: string;
-  errors: string[];
+  errors?: string[];
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({

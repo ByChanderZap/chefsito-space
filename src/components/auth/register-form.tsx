@@ -1,13 +1,13 @@
 "use client";
 
-import { SignUpFormState } from "@/types/auth/signin-formstate";
+import { SignUpFormState } from "@/types/auth/formStates";
 import { signUpAction } from "@/actions/auth";
 import { useFormState } from "react-dom";
-import FormSubmitButton from "./btns/form-submit-auth";
-import TextInput from "./form-components/text-input";
-import PasswordInput from "./form-components/password-input";
-import ErrorMessage from "./form-components/error-message";
-import SuccessMessage from "./form-components/success-message";
+import FormSubmitButton from "@/components/btns/form-submit-auth";
+import TextInput from "@/components/form-components/text-input";
+import PasswordInput from "@/components/form-components/password-input";
+import ErrorMessage from "@/components/form-components/error-message";
+import SuccessMessage from "@/components/form-components/success-message";
 
 const initialState: SignUpFormState = {
   message: null,

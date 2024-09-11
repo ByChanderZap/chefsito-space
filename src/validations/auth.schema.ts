@@ -52,3 +52,21 @@ export const SignInFormSchema = z
       .min(8, { message: 'Password must be at least 8 characters long.' })
       .max(100, { message: 'Password maximum length is 100 characters.' }),
   })
+
+
+export const ResetSchema = z
+  .object({
+    email: z
+      .string()
+      .email('Not a valid Email.')
+      .min(1, { message: 'Email is required.' })
+      .max(300, { message: 'Email is too long.' }),
+  })
+
+export const NewPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, { message: 'Password must be at least 8 characters long.' })
+      .max(100, { message: 'Password maximum length is 100 characters.' }),
+  })

@@ -44,3 +44,10 @@ export const verifyEmail = async (id: string, email: string) => {
     }
   })
 }
+
+export const updateUserPassword = async (id: string, password: string ) => {
+  await prisma.user.update({
+    where: { id },
+    data: { password }
+  })
+}

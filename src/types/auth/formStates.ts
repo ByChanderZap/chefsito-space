@@ -14,3 +14,8 @@ export interface SignInFormState {
   error?: string | null
   message?: string | null
 }
+
+export interface ResetFormState {
+  error?: string | null
+  message?: string | null
+}

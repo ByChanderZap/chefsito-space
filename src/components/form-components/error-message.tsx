@@ -3,9 +3,9 @@ interface ErrorMessagesProps {
 }
 
 const ErrorMessage: React.FC<ErrorMessagesProps> = ({ message }) => (
-  <div aria-live="polite" aria-atomic="true" className="w-full">
+  <div aria-live="polite" aria-atomic="true" className="">
     {message ? (
-      <p className="my-6 text-sm text-red-500 text-center">{message}</p>
+      <p className="text-sm text-red-500 text-center">{message}</p>
     ) : null}
   </div>
 );
