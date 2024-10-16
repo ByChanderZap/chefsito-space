@@ -1,12 +1,7 @@
 import { RecipePreview } from "@/types/recipes";
 import Image from "next/image";
 import Link from "next/link";
-
-// const handleAddToFavorites = (event: React.MouseEvent<HTMLButtonElement>) => {
-//   event.preventDefault();
-//   event.stopPropagation();
-//   alert("You clicked Add to Favorites");
-// };
+import { FavButton } from "./add-to-fav-button";
 
 export function RecipeItem({ recipe }: { recipe: RecipePreview }) {
   return (
@@ -28,9 +23,7 @@ export function RecipeItem({ recipe }: { recipe: RecipePreview }) {
             <p className="mt-1 text-sm text-gray-200">{recipe.creator_name}</p>
           </div>
 
-          <button className="absolute right-4 top-4 z-30 rounded bg-red-500 px-2 py-1 text-xs font-medium text-white opacity-0 transition-colors hover:bg-red-600 group-hover:opacity-100">
-            Add to Favorites
-          </button>
+          <FavButton />
         </div>
       </a>
     </li>
