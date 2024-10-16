@@ -15,7 +15,7 @@ const initialState: ResetFormState = {
 
 export default function ResetForm() {
   const [state, formAction] = useFormState(resetAction, initialState);
-  console.log(state);
+
   return (
     <form action={formAction} className="flex flex-col gap-6">
       <h3 className="text-3xl font-extrabold text-trinidad-50">

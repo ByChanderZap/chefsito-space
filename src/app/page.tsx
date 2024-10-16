@@ -17,8 +17,6 @@ export default function Home({
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
 
-  // const totalPages = await fetchInvoicesPages(query);
-  // console.log(query, currentPage);
   return (
     <main className="">
       <div className="max-w-xl pt-24 pb-24 mx-auto">
