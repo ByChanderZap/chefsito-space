@@ -4,6 +4,7 @@
       "recipe_name": "Chocolate Cake",
       "recipe_slug":"chocolate-cake",
       "creator_name": "joe doe",
+      "recipe_description": "random description",
       "recipe_instructions": [
           {"instruction": "do first step", "step_number": 1},
           {"instruction": "do something 2", "step_number": 2}
@@ -21,9 +22,31 @@
       "recipe_id": "a7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Vanilla Ice Cream",
       "recipe_slug":"vanilla-ice-cream",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Mix ingredients", "step_number": 1},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
+          {"instruction": "Freeze for 4 hours", "step_number": 2},
           {"instruction": "Freeze for 4 hours", "step_number": 2}
       ],
       "recipe_user_id": "156d43c8-f731-4493-bc37-04becea22dbd",
@@ -39,6 +62,7 @@
       "recipe_id": "b7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Spaghetti Bolognese",
       "recipe_slug":"spaghetti-bolognese",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Boil pasta", "step_number": 1},
@@ -57,6 +81,7 @@
       "recipe_id": "c7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Caesar Salad",
       "recipe_slug": "caesar-salad",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Prepare dressing", "step_number": 1},
@@ -75,6 +100,7 @@
       "recipe_id": "d7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Grilled Chicken",
       "recipe_slug": "grilled-chicken",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Marinate chicken", "step_number": 1},
@@ -92,6 +118,7 @@
   {
       "recipe_id": "e7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Margarita Pizza",
+      "recipe_description": "random description",
       "recipe_slug":"margarita-pizza",
       "creator_name": "joe doe",
       "recipe_instructions": [
@@ -111,6 +138,7 @@
       "recipe_id": "f7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Apple Pie",
       "recipe_slug": "apple-pie",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Prepare crust", "step_number": 1},
@@ -129,6 +157,7 @@
       "recipe_id": "g7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Beef Stew",
       "recipe_slug":"beef-stew",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Brown the beef", "step_number": 1},
@@ -147,6 +176,7 @@
       "recipe_id": "h7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Pancakes",
       "recipe_slug":"pancakes",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Mix ingredients", "step_number": 1},
@@ -165,6 +195,7 @@
       "recipe_id": "i7299b68-5946-4641-889f-ac5bb9740309",
       "recipe_name": "Chicken Curry",
       "recipe_slug": "chicken-curry",
+      "recipe_description": "random description",
       "creator_name": "joe doe",
       "recipe_instructions": [
           {"instruction": "Cook chicken", "step_number": 1},

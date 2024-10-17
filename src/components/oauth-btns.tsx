@@ -1,16 +1,16 @@
 import SocialButton from "./btns/social-button";
 import DiscordIcon from "./icons/discord";
 import GoogleIcon from "./icons/google";
-import TwitterIcon from "./icons/twitter";
+import GithubIcon from "./icons/twitter";
 
 export default function OauthButtons() {
   return (
     <div className="mt-6 flex justify-center space-x-6">
       <SocialButton providerName="google" icon={<GoogleIcon />} />
 
-      <SocialButton providerName="github" icon={<TwitterIcon />} />
+      <SocialButton providerName="github" icon={<GithubIcon />} />
 
-      {/* <SocialButton icon={<DiscordIcon />} /> */}
+      <SocialButton providerName="discord" icon={<DiscordIcon />} />
     </div>
   );
 }

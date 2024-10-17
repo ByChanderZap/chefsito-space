@@ -6,7 +6,10 @@ import { FavButton } from "./add-to-fav-button";
 export function RecipeItem({ recipe }: { recipe: RecipePreview }) {
   return (
     <li className="break-inside-avoid">
-      <a href="#" className="group relative block">
+      <Link
+        href={`/recipes/details/${recipe.recipe_slug}`}
+        className="group relative block"
+      >
         <div className="relative cursor-pointer before:absolute before:z-10 before:h-full before:w-full before:rounded-3xl before:opacity-50 hover:before:bg-gray-600">
           <Image
             src={recipe.recipe_image}
@@ -25,7 +28,7 @@ export function RecipeItem({ recipe }: { recipe: RecipePreview }) {
 
           <FavButton />
         </div>
-      </a>
+      </Link>
     </li>
   );
 }

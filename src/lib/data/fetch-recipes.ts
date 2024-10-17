@@ -26,3 +26,8 @@ function ilike(str: string, query?: string): boolean {
   if (!query) return true; // If no query is provided, return all recipes
   return str.toLowerCase().includes(query.toLowerCase());
 }
+
+export async function getRecipeBySlug(slug: string) {
+  const recipe = recipes.find((recipe) => recipe.recipe_slug === slug)
+  return recipe
+}

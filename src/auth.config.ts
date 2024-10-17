@@ -8,11 +8,15 @@ import Google from "next-auth/providers/google";
 import { SignInFormSchema } from '@/validations/auth.schema';
 import { getUserByEmail } from "@/lib/data/user.queries";
 import { passwordMatch } from "./lib/utils/password-utils";
+import Discord from "next-auth/providers/discord";
 
  
 export default { 
-  // providers: [GitHub] 
   providers: [
+    Discord({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET
+    }),
     GitHub({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET
@@ -40,37 +44,3 @@ export default {
     })
   ]
 } satisfies NextAuthConfig
-
-
-// import { PrismaAdapter } from '@auth/prisma-adapter';
-// import type { NextAuthConfig } from 'next-auth';
-// import {prisma} from './lib/prisma';
-
-// export const authConfig: NextAuthConfig = {
-//   pages: {
-//     signIn: '/auth/signin',
-//   },
-//   callbacks: {
-//     async authorized({ auth, request: { nextUrl } }) {
-//       const isLoggedIn = !!auth?.user;
-
-//       if (isLoggedIn && nextUrl.pathname === '/login') {
-//         return Response.redirect(new URL('/profile', nextUrl));
-//       }
-
-//       /**
-//        * TODO:
-//        * Remove this shit, this is just for understand
-//        */
-//       const isOnProtected = nextUrl.pathname.startsWith('/protected');
-//       if(isOnProtected) {
-//         return isLoggedIn
-//       }
-//       // Allow access to all other pages for now
-//       return true;
-//     },
-//   },
-//   providers: [],
-//   adapter: PrismaAdapter(prisma),
-//   debug: true
-// } satisfies NextAuthConfig;

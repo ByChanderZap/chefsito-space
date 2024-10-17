@@ -44,7 +44,7 @@ export default function SignInForm() {
         errors={[]}
       />
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+      {/* <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <CheckboxInput
           id="remember-me"
           name="remember-me"
@@ -58,7 +58,7 @@ export default function SignInForm() {
             Forgot Password?
           </Link>
         </div>
-      </div>
+      </div> */}
 
       <div>
         <ErrorMessage message={state.error || urlError} />
