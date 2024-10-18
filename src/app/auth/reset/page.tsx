@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ResetForm from "@/components/auth/reset-form";
+import ResetForm from "@/components/forms/reset-form";
 import formImage from "@/assets/sign-in-form-image.webp";
 
 export default function ResetPassword() {
