@@ -1,13 +1,15 @@
 "use client";
 import { useFormState } from "react-dom";
-import { useRef, useState, useEffect } from "react";
-import IngredientSearch from "../form-components/ingredient-search";
-import FormSubmitButton from "../btns/form-submit-auth";
-import { createRecipeAction } from "@/actions/recipes";
-import TextInput from "../form-components/text-input";
-import TextAreaInput from "../form-components/text-area";
+import { useRef, useState } from "react";
+
 import { RecipeIngredient } from "@/types/recipes";
-import SelectCountryInput from "../form-components/select-country-input";
+import { createRecipeAction } from "@/actions/recipes";
+import FormSubmitButton from "@/components/btns/form-submit";
+import TextInput from "@/components/form-components/text-input";
+import TextAreaInput from "@/components/form-components/text-area";
+import IngredientSearch from "@/components/recipes/ingredient-search";
+import SelectCountryInput from "@/components/recipes/select-country-input";
+import DisplayIngredientes from "@/components/recipes/ingredients-display";
 
 export default function NewRecipeForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -67,8 +69,8 @@ export default function NewRecipeForm() {
         <SelectCountryInput
           id="country"
           label="Country"
-          name="country"
           defaultValue="que es esto"
+          name="country"
           errors={[]}
         ></SelectCountryInput>
       </div>
@@ -84,27 +86,11 @@ export default function NewRecipeForm() {
       <div className="grid grid-cols-1">
         <IngredientSearch onIngredientAdd={handleIngredientAdd} />
       </div>
-      {ingredients.length > 0 && (
-        <div className="my-4">
-          <h3 className="font-bold mb-2 text-lg">Chosen Ingredients:</h3>
-          <ul className="list-disc pl-5 space-y-1">
-            {ingredients.map((ingredient, index) => (
-              <li key={index} className="flex items-center justify-between">
-                <span>
-                  {ingredient.quantity} {ingredient.unit} of {ingredient.name}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveIngredient(index)}
-                  className="text-red-500 hover:text-red-700 focus:outline-none"
-                >
-                  ✕
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <DisplayIngredientes
+        handleRemoveIngredient={handleRemoveIngredient}
+        ingredients={ingredients}
+      />
+
       <FormSubmitButton text="Create Recipe" loadingText="Creating Recipe..." />
     </form>
   );

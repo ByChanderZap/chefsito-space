@@ -5,7 +5,7 @@ import TextInput from "../form-components/text-input";
 import OauthButtons from "../oauth-btns";
 import PasswordInput from "../form-components/password-input";
 import Divider from "../form-components/divider";
-import FormSubmitButton from "../btns/form-submit-auth";
+import FormSubmitButton from "../btns/form-submit";
 import CheckboxInput from "../form-components/checkbox-input";
 import FormHeader from "../form-components/header";
 import { authenticate } from "@/actions/auth";

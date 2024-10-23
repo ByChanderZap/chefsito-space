@@ -3,7 +3,7 @@
 import { SignUpFormState } from "@/types/auth/formStates";
 import { signUpAction } from "@/actions/auth";
 import { useFormState } from "react-dom";
-import FormSubmitButton from "@/components/btns/form-submit-auth";
+import FormSubmitButton from "@/components/btns/form-submit";
 import TextInput from "@/components/form-components/text-input";
 import PasswordInput from "@/components/form-components/password-input";
 import ErrorMessage from "@/components/form-components/error-message";

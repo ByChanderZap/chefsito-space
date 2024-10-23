@@ -2,6 +2,7 @@
 import { getIngredients } from "@/actions/recipes";
 import { RecipeIngredient } from "@/types/recipes";
 import { useState } from "react";
+import GenerateUnitsOptions from "./gen-options";
 
 const IngredientSearch = ({
   onIngredientAdd,
@@ -60,18 +61,25 @@ const IngredientSearch = ({
 
   return (
     <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2">
+      <label className="block text-trinidad-100 text-sm font-bold mb-4">
         Ingredients
       </label>
-      <div className="mb-2 relative">
+      <div className="relative z-0 w-full mb-5 group">
         <input
           type="text"
           name="ingredient_name"
           value={ingredientName}
           onChange={handleIngredientNameChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 bg-black text-white leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Nombre del ingrediente"
+          className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-white leading-tight focus:border-trinidad-600 focus:outline-none focus:ring-0"
+          placeholder=" "
+          required
         />
+        <label
+          htmlFor="ingredient_name"
+          className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-trinidad-600 rtl:peer-focus:translate-x-1/4 dark:text-gray-400 peer-focus:dark:text-trinidad-600"
+        >
+          Ingredient Name
+        </label>
         {suggestions.length > 0 && (
           <ul className="absolute bg-black border border-gray-600 rounded w-full mt-1 z-10">
             {suggestions.map((suggestion, index) => (
@@ -86,40 +94,48 @@ const IngredientSearch = ({
           </ul>
         )}
       </div>
-      <div className="flex mb-2">
+      <div className="flex mb-2 gap-4">
         <input
           type="number"
           name="ingredient_quantity"
           value={ingredientQuantity}
           onChange={(e) => setIngredientQuantity(Number(e.target.value))}
-          className="shadow appearance-none border rounded w-1/2 py-2 px-3 bg-black text-white leading-tight focus:outline-none focus:shadow-outline mr-2"
-          placeholder="Cantidad"
+          className="peer block w-1/2 appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-white leading-tight focus:border-trinidad-600 focus:outline-none focus:ring-0 mr-2"
+          placeholder=" "
           min="0"
+          required
         />
+        <label
+          htmlFor="ingredient_quantity" // Ensure this matches the input's name
+          className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-trinidad-600 rtl:peer-focus:translate-x-1/4 dark:text-gray-400 peer-focus:dark:text-trinidad-600"
+        >
+          Quantity
+        </label>
         <select
           value={ingredientUnit}
           name="ingredient_unit"
           onChange={(e) => setIngredientUnit(e.target.value)}
-          className="shadow appearance-none border rounded w-1/2 py-2 px-3 bg-black text-white leading-tight focus:outline-none focus:shadow-outline"
+          className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-trinidad-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-trinidad-600"
         >
-          <option value="g">g</option>
-          <option value="kg">kg</option>
-          <option value="oz">oz</option>
-          <option value="tsp">tsp</option>
-          <option value="tbsp">tbsp</option>
-          <option value="pz">pz</option>
-          <option value="cup">cup</option>
+          <GenerateUnitsOptions />
         </select>
-      </div>
-      <div className="flex justify-center">
         <button
           type="button"
           onClick={handleAddIngredient}
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-trinidad-500 hover:bg-trinidad-700 text-trinidad-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Añadir
         </button>
       </div>
+      {/* <div className="flex justify-center">
+        <button
+          type="button"
+          onClick={handleAddIngredient}
+          className="bg-trinidad-500 hover:bg-trinidad-700 text-trinidad-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Añadir
+        </button>
+      </div> */}
     </div>
   );
 };

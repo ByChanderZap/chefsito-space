@@ -2,7 +2,7 @@
 import { useFormState } from "react-dom";
 
 import TextInput from "../form-components/text-input";
-import FormSubmitButton from "../btns/form-submit-auth";
+import FormSubmitButton from "../btns/form-submit";
 import ErrorMessage from "../form-components/error-message";
 import { ResetFormState } from "@/types/auth/formStates";
 import SuccessMessage from "../form-components/success-message";
