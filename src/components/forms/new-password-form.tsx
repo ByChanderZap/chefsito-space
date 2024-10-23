@@ -21,8 +21,7 @@ export default function NewPasswordForm() {
 
     const formData = new FormData(event.currentTarget);
     const password = formData.get("password") as string;
-    console.log("HEREEE:", password);
-    // Validate the password
+
     const parsed = NewPasswordSchema.safeParse({ password });
 
     if (!parsed.success) {

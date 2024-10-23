@@ -38,8 +38,9 @@ model Country {
 model Recipe {
   id                String             @id @default(uuid())
   title             String
-  description       String?
-  image             String?
+  description       String
+  image             String
+  slug              String
   instructions      Json
   userId            String
   createdAt         DateTime           @default(now())

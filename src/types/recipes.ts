@@ -23,4 +23,11 @@ export type RecipeInstruction = {
   step_number: number;
 }
 
+export type Country = {
+  id: string;
+  name: string;
+  iso: string
+}
+
+
 export type RecipePreview = Omit<Recipe, 'recipe_instructions' | 'recipe_user_id' | 'recipe_ingredients' | 'recipe_description'> 
