@@ -45,7 +45,7 @@ const SelectCountryInput: React.FC<SelectCountryInputProps> = ({
         required
       >
         <option value="" className="bg-trinidad-400">
-          Select a country
+          Where is this recipe from
         </option>
         {countries.map((country) => (
           <option
@@ -63,6 +63,13 @@ const SelectCountryInput: React.FC<SelectCountryInputProps> = ({
       >
         {label}
       </label>
+      <div aria-live="polite" aria-atomic="true">
+        {errors?.map((error: string) => (
+          <p className="mt-2 text-sm text-red-500" key={error}>
+            {error}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 'use server';
 
+import { uploadImage } from "@/lib/cloudinary";
 import { prisma } from "@/lib/prisma";
+import { RecipeIngredient, RecipeInstruction } from "@/types/recipes";
+import { CreateRecipeSchema } from "@/validations/recipe.schema";
 
 export const getCountries = async () => {
   return await prisma.country.findMany();
@@ -40,14 +43,33 @@ export async function getIngredients(searchTerm: string) {
 }
 
 export async function createRecipeAction(prevState: any, formData: FormData) {
-  // Convert the keys iterator to an array
-  // const keysArray = Array.from(formData.keys());
-  for (const [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`); // Log each key-value pair
+  const name = formData.get("name") as string;
+  const country = formData.get("country") as string;
+  const description = formData.get("description") as string;
+  const imageInput = formData.get("image") as File | null;
+  let ingredients = JSON.parse(formData.get("ingredients") as string) as RecipeIngredient[];
+  let instructions = JSON.parse(formData.get("instructions") as string) as RecipeInstruction[];
+  
+  const preRecipe = {
+    name,
+    country,
+    description,
+    ingredients,
+    instructions,
+    imageInput
   }
-  // const ings = formData.getAll("ingredient_name")
-  // console.log(ings)
-  // Log the keys to the console
-  // console.log(keysArray);
+  
+  const validatedFields = await CreateRecipeSchema.safeParseAsync(preRecipe)
+  console.log(validatedFields.data?.imageInput)
+  await uploadImage(validatedFields.data?.imageInput as unknown as File)
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to create user.',
+    };
+  }
+  const data = { validatedFields }
+
   return {};
 }

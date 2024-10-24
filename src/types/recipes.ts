@@ -12,22 +12,28 @@ export type Recipe = {
 }
 
 export type RecipeIngredient = {
-  name:     string;
-  unit:     string;
-  weight:   number;
-  quantity: number;
+  name:                 string;
+  unit:                 string;
+  weight:               number;
+  quantity:             number;
 }
 
 export type RecipeInstruction = {
-  instruction: string;
-  step_number: number;
+  instruction:          string;
+  step_number:          number;
 }
 
 export type Country = {
-  id: string;
-  name: string;
-  iso: string
+  id:                   string;
+  name:                 string;
+  iso:                  string
 }
 
-
 export type RecipePreview = Omit<Recipe, 'recipe_instructions' | 'recipe_user_id' | 'recipe_ingredients' | 'recipe_description'> 
+
+export type RecipeInput  = {
+  country: string;
+  description: string;
+  ingredients: RecipeIngredient[];
+  instructions: RecipeInstruction[];
+}
