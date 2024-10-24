@@ -1,8 +1,9 @@
 'use server';
 
 import { uploadImage } from "@/lib/cloudinary";
+import { createRecipe } from "@/lib/data/recipes.queries";
 import { prisma } from "@/lib/prisma";
-import { RecipeIngredient, RecipeInstruction } from "@/types/recipes";
+import { RecipeIngredient, RecipeInput, RecipeInstruction } from "@/types/recipes";
 import { CreateRecipeSchema } from "@/validations/recipe.schema";
 
 export const getCountries = async () => {
@@ -59,9 +60,9 @@ export async function createRecipeAction(prevState: any, formData: FormData) {
     imageInput
   }
   
-  const validatedFields = await CreateRecipeSchema.safeParseAsync(preRecipe)
-  console.log(validatedFields.data?.imageInput)
-  await uploadImage(validatedFields.data?.imageInput as unknown as File)
+  const validatedFields = CreateRecipeSchema.safeParse(preRecipe)
+  // console.log(validatedFields.data?.imageInput)
+  // await uploadImage(validatedFields.data?.imageInput as unknown as File)
 
   if (!validatedFields.success) {
     return {
@@ -69,7 +70,8 @@ export async function createRecipeAction(prevState: any, formData: FormData) {
       message: 'Missing Fields. Failed to create user.',
     };
   }
-  const data = { validatedFields }
+  const { data } = validatedFields
+  await createRecipe(data as RecipeInput)
 
   return {};
 }

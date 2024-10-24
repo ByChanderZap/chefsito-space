@@ -24,8 +24,8 @@ model RecipeIngredient {
   weight       Int
   quantity     Float      @default(1)
   unit         String
-  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
-  recipe       Recipe     @relation(fields: [recipeId], references: [id])
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  recipe       Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
 }
 
 model Country {
@@ -49,8 +49,8 @@ model Recipe {
   countryId         String
   recipeIngredients RecipeIngredient[]
   favorites         Favorite[]
-  country           Country            @relation(fields: [countryId], references: [id])
-  // user              User               @relation(fields: [userId], references: [id])
+  country           Country            @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade) // Uncommented
 }
 
 model Favorite {
@@ -58,7 +58,7 @@ model Favorite {
   userId    String
   recipeId  String
   createdAt DateTime @default(now())
-  // user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
 
   @@unique([userId, recipeId]) // Ensures a user can't favorite the same recipe multiple times
@@ -79,12 +79,11 @@ model User {
   password      String?
   role          UserRole  @default(USER)
   accounts      Account[]
-  // Optional for WebAuthn support
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // Recipe    Recipe[]
-  // Favorite  Favorite[]
+  Favorite  Favorite[]
+  Recipe    Recipe[]
 }
 
 model Account {

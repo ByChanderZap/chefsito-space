@@ -32,8 +32,10 @@ export type Country = {
 export type RecipePreview = Omit<Recipe, 'recipe_instructions' | 'recipe_user_id' | 'recipe_ingredients' | 'recipe_description'> 
 
 export type RecipeInput  = {
+  name: string;
   country: string;
   description: string;
   ingredients: RecipeIngredient[];
   instructions: RecipeInstruction[];
+  imageInput: File | null;
 }
